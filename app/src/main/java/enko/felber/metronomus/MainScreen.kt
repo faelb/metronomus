@@ -22,7 +22,7 @@ class MainScreen : Fragment() {
 
        val binding:FragmentMainScreenBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_main_screen,container,false)
 
-        //binding.imageViewPlayPause.setOnClickListener { it.findNavController().navigate(R.id.action_mainScreen_to_testFragment) }
+        binding.imageViewPlayPause.setOnClickListener { it.findNavController().navigate(R.id.action_mainScreen_to_testFragment) }
 
         return binding.root
     }

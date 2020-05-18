@@ -6,5 +6,13 @@
     <fragment
         android:id="@+id/mainScreen"
         android:name="enko.felber.metronomus.MainScreen"
-        android:label="MainScreen" />
+        android:label="MainScreen" >
+        <action
+            android:id="@+id/action_mainScreen_to_testFragment"
+            app:destination="@id/testFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/testFragment"
+        android:name="enko.felber.metronomus.TestFragment"
+        android:label="TestFragment" />
 </navigation>
