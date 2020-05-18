@@ -8,26 +8,128 @@
         android:layout_height="match_parent"
         tools:context=".MainScreen">
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Button"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.489"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.802" />
-
         <TextView
             android:id="@+id/textViewMainFragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/titleMainFragment"
+            android:fontFamily="@font/titan_one"
+            android:text="@string/bpmMainScreen"
+            android:textSize="@dimen/mainBPMText"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/buttonMinusOne"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/buttonTextMinusOne"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.216"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.614" />
+
+        <Button
+            android:id="@+id/buttonMinusFive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/buttonTextMinusFive"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.216"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.401" />
+
+        <Button
+            android:id="@+id/buttonPlusOne"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/buttonTextPlusOne"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.839"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.614" />
+
+        <Button
+            android:id="@+id/buttonPlusFive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/buttonTextPlusFive"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.839"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.401" />
+
+        <ImageView
+            android:id="@+id/clock1"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:contentDescription="@string/clockDescription"
+            android:scrollbarSize="4dp"
+            app:layout_constraintBottom_toTopOf="@+id/buttonMinusFive"
+            app:layout_constraintEnd_toStartOf="@+id/clock2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/presence_invisible" />
+
+        <ImageView
+            android:id="@+id/clock2"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:contentDescription="@string/clockDescription"
+            android:scrollbarSize="4dp"
+            app:layout_constraintBottom_toTopOf="@+id/buttonMinusFive"
+            app:layout_constraintEnd_toStartOf="@+id/clock3"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/clock1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/presence_invisible" />
+
+        <ImageView
+            android:id="@+id/clock3"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:contentDescription="@string/clockDescription"
+            android:scrollbarSize="4dp"
+            app:layout_constraintBottom_toTopOf="@+id/buttonPlusFive"
+            app:layout_constraintEnd_toStartOf="@+id/clock4"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/clock2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/presence_invisible" />
+
+        <ImageView
+            android:id="@+id/clock4"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:contentDescription="@string/clockDescription"
+            android:scrollbarSize="4dp"
+            app:layout_constraintBottom_toTopOf="@+id/buttonPlusFive"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/clock3"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/presence_invisible" />
+
+        <ImageView
+            android:id="@+id/imageViewPlayPause"
+            android:layout_width="105dp"
+            android:layout_height="91dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.821"
+            app:srcCompat="@android:drawable/ic_media_play" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
