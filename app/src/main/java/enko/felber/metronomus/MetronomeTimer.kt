@@ -1,6 +1,8 @@
 package enko.felber.metronomus
 
 import android.app.Application
+import android.media.AsyncPlayer
+import android.media.MediaPlayer
 import android.os.Handler
 import android.view.View
 import androidx.databinding.DataBindingUtil
@@ -16,6 +18,7 @@ class MetronomeTimer constructor(binding: FragmentMainScreenBinding) {
 
     //for coroutine
     private var viewModelJob = Job()
+
     //Scope
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
@@ -34,24 +37,21 @@ class MetronomeTimer constructor(binding: FragmentMainScreenBinding) {
 
         //convert bpm into millisec 60000/bpm = millisec
         var milliSec = 60000 / bpm
-        Timber.i("Millisekunden: " + milliSec + "   BPM: " + bpm)
+
+        //coroutine to use thread
         uiScope.launch {
             for (item in clockViews) {
                 item.setBackgroundResource(R.drawable.rounded_textview_active)
+
                 //BPM Timer Kicken
                 delay(milliSec.toLong())
 
-            item.setBackgroundResource(R.drawable.rounded_textview_inactive)
+                item.setBackgroundResource(R.drawable.rounded_textview_inactive)
+            }
         }
-    }
 
         //runnable = Runnable {
 
 
-        // postDelayed re-adds the action to the queue of actions the Handler is cycling
-        // through. The delayMillis param tells the handler to run the runnable in
-        // 1 second (1000ms)
-        //handler.postDelayed(runnable, 1000)
-//do the timer stuff}
     }
 }

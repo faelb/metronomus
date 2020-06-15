@@ -1,6 +1,7 @@
 package enko.felber.metronomus
 
 import android.graphics.Color
+import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -22,6 +23,8 @@ class MainScreen : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+
+
         val binding: FragmentMainScreenBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_main_screen, container, false)
         val metronomeTimer: MetronomeTimer = MetronomeTimer(binding = binding)
@@ -31,12 +34,15 @@ class MainScreen : Fragment() {
         binding.buttonPlusOne.setOnClickListener { binding.clock1.setBackgroundResource(R.drawable.rounded_textview_active) }
 
 
-        //holt die bpm als Int aus dem TextView
-        val bpm = binding.textViewBPM.text.toString().toInt()
+
         //Timber.i("" +bpm)
 
         //TODO put value from getBPM into startTimer onClick function
         binding.imageViewPlayPause.setOnClickListener {
+
+            //holt die bpm als Int aus dem TextView (innerhalb des Clicklisteners wegen Lifecycle "scope" ausserhalb)
+            var bpm = binding.textViewBPM.text.toString().toInt()
+
             metronomeTimer.startTicker(bpm)
         }
 
