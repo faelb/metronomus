@@ -2,20 +2,22 @@ package enko.felber.metronomus
 
 import android.app.Application
 import android.os.Handler
+import androidx.databinding.DataBindingUtil
+import enko.felber.metronomus.databinding.FragmentMainScreenBinding
 import timber.log.Timber
 
 
-class MetronomeTimer {
+class MetronomeTimer constructor(binding: FragmentMainScreenBinding) {
 
     //private var handler = Handler()
     //private lateinit var runnable: Runnable
-
+    val bindingUtil = binding
 
     fun startTicker(bpm: Int) {
 
         //convert bpm into millisec 60000/bpm = millisec
         var milliSec = 60000 / bpm
-        Timber.i("Triggered")
+        Timber.i("Millisekunden: " +milliSec +"   BPM: " +bpm)
         //runnable = Runnable {
 
 
