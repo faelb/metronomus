@@ -26,9 +26,6 @@ class MainScreen : Fragment() {
             DataBindingUtil.inflate(inflater, R.layout.fragment_main_screen, container, false)
         val metronomeTimer: MetronomeTimer = MetronomeTimer(binding = binding)
 
-        binding.imageViewPlayPause.setOnClickListener {
-            it.findNavController().navigate(R.id.action_mainScreen_to_testFragment)
-        }
 
         //trigger inf clock function for color change of circle
         binding.buttonPlusOne.setOnClickListener { binding.clock1.setBackgroundResource(R.drawable.rounded_textview_active) }
@@ -39,7 +36,10 @@ class MainScreen : Fragment() {
         //Timber.i("" +bpm)
 
         //TODO put value from getBPM into startTimer onClick function
-        metronomeTimer.startTicker(bpm)
+        binding.imageViewPlayPause.setOnClickListener {
+            metronomeTimer.startTicker(bpm)
+        }
+
 
 
         return binding.root
