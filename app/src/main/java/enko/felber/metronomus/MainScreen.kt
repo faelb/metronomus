@@ -23,6 +23,8 @@ class MainScreen : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+        var player: MediaPlayer = MediaPlayer.create(context,R.raw.click)
+
 
 
         val binding: FragmentMainScreenBinding =
@@ -43,7 +45,8 @@ class MainScreen : Fragment() {
             //holt die bpm als Int aus dem TextView (innerhalb des Clicklisteners wegen Lifecycle "scope" ausserhalb)
             var bpm = binding.textViewBPM.text.toString().toInt()
 
-            metronomeTimer.startTicker(bpm)
+            metronomeTimer.startTicker(bpm,player)
+
         }
 
 

@@ -16,6 +16,7 @@ class MetronomeTimer constructor(binding: FragmentMainScreenBinding) {
     //private var handler = Handler()
     //private lateinit var runnable: Runnable
 
+
     //for coroutine
     private var viewModelJob = Job()
 
@@ -32,7 +33,7 @@ class MetronomeTimer constructor(binding: FragmentMainScreenBinding) {
         )
 
 
-    fun startTicker(bpm: Int) {
+    fun startTicker(bpm: Int, player: MediaPlayer) {
 
 
         //convert bpm into millisec 60000/bpm = millisec
@@ -43,8 +44,10 @@ class MetronomeTimer constructor(binding: FragmentMainScreenBinding) {
             for (item in clockViews) {
                 item.setBackgroundResource(R.drawable.rounded_textview_active)
 
+                player.start()
                 //BPM Timer Kicken
                 delay(milliSec.toLong())
+                player.stop()
 
                 item.setBackgroundResource(R.drawable.rounded_textview_inactive)
             }
