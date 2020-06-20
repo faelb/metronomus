@@ -11,6 +11,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import enko.felber.metronomus.databinding.FragmentMainScreenBinding
 import timber.log.Timber
+import kotlin.math.absoluteValue
 
 /**
  * A simple [Fragment] subclass.
@@ -32,14 +33,15 @@ class MainScreen : Fragment() {
         val metronomeTimer: MetronomeTimer = MetronomeTimer(binding = binding)
 
 
-        //trigger inf clock function for color change of circle
-        binding.buttonPlusOne.setOnClickListener { binding.clock1.setBackgroundResource(R.drawable.rounded_textview_active) }
+        //+ and - buttons change the bpm textfield
+        binding.buttonPlusOne.setOnClickListener {}
 
 
 
-        //Timber.i("" +bpm)
 
-        //TODO put value from getBPM into startTimer onClick function
+
+
+
         binding.imageViewPlayPause.setOnClickListener {
 
             //holt die bpm als Int aus dem TextView (innerhalb des Clicklisteners wegen Lifecycle "scope" ausserhalb)
