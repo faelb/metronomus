@@ -18,10 +18,13 @@ class MetronomeTimer constructor(binding: FragmentMainScreenBinding) {
 
 
     //for coroutine
-    private var viewModelJob = Job()
+    private lateinit var viewModelJob:Job
+
+    //um stop zu checken
+    private var stopCounter = 0
 
     //Scope
-    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
+    private lateinit var uiScope:CoroutineScope
 
     val bindingUtil = binding
     val clockViews: List<View> =
@@ -34,6 +37,16 @@ class MetronomeTimer constructor(binding: FragmentMainScreenBinding) {
 
 
     fun startTicker(bpm: Int, player: MediaPlayer) {
+        stopCounter++
+        if (stopCounter == 2){
+            stopCounter = 0
+            uiScope.cancel()
+            return
+        }else{
+            viewModelJob = Job()
+
+           uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
+
 
 
         //convert bpm into millisec 60000/bpm = millisec
@@ -58,8 +71,12 @@ class MetronomeTimer constructor(binding: FragmentMainScreenBinding) {
             }
         }
 
-        //runnable = Runnable {
 
 
     }
+}
+
+
+
+
 }
