@@ -6,7 +6,7 @@
     <data>
         <variable
             name="myBPM"
-            type="enko.felber.metronomus.MYBPM" />
+            type="enko.felber.metronomus.MYBPM"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/titan_one"
             android:inputType="number"
-            android:text="@={myBPM.bpmString}"
+            android:text="@={Integer.toString(myBPM.bpm)}"
             android:textSize="36sp"
             app:layout_constraintBaseline_toBaselineOf="@+id/textViewBPM2"
             app:layout_constraintEnd_toStartOf="@+id/textViewBPM2"

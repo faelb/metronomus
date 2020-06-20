@@ -19,15 +19,16 @@ import kotlin.math.absoluteValue
  */
 class MainScreen : Fragment() {
 
-    private val myBPM: MYBPM = MYBPM(120)//startwert
+   private val myBPM: MYBPM = MYBPM(120)//startwert
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-
+        //for sounds later on
         var player: MediaPlayer = MediaPlayer.create(context,R.raw.click)
+
 
 
 
@@ -37,8 +38,10 @@ class MainScreen : Fragment() {
 
 
         //+ and - buttons change the bpm textfield
-        binding.buttonPlusOne.setOnClickListener {myBPM.bpm =+1 }
-
+        binding.buttonPlusOne.setOnClickListener {myBPM.bpm = (myBPM.bpm+1) }
+        binding.buttonPlusFive.setOnClickListener {myBPM.bpm = (myBPM.bpm+5) }
+        binding.buttonMinusOne.setOnClickListener {myBPM.bpm = (myBPM.bpm-1) }
+        binding.buttonMinusFive.setOnClickListener {myBPM.bpm = (myBPM.bpm-5) }
 
 
 
@@ -48,7 +51,7 @@ class MainScreen : Fragment() {
         binding.imageViewPlayPause.setOnClickListener {
 
             //get bpm value from input into data class
-            myBPM.bpm = textViewBPM.text.toString().toInt()
+            //myBPM.bpm = textViewBPM.text.toString().toInt()
 
             //starte ticker mit value aus der Dataclass
             metronomeTimer.startTicker(myBPM.bpm,player)
