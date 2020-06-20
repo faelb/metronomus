@@ -38,18 +38,23 @@ class MetronomeTimer constructor(binding: FragmentMainScreenBinding) {
 
         //convert bpm into millisec 60000/bpm = millisec
         var milliSec = 60000 / bpm
+        var counter = 0
 
         //coroutine to use thread
         uiScope.launch {
-            for (item in clockViews) {
-                item.setBackgroundResource(R.drawable.rounded_textview_active)
-
-                player.start()
+            while(counter < 4){ //button pause not pressed
+                clockViews[counter].setBackgroundResource(R.drawable.rounded_textview_active)
                 //BPM Timer Kicken
                 delay(milliSec.toLong())
                 player.stop()
 
-                item.setBackgroundResource(R.drawable.rounded_textview_inactive)
+                clockViews[counter].setBackgroundResource(R.drawable.rounded_textview_inactive)
+                counter++
+
+                if (counter==4){
+                    counter=0
+                }
+
             }
         }
 
