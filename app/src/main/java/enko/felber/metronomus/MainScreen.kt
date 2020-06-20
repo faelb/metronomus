@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import enko.felber.metronomus.databinding.FragmentMainScreenBinding
+import kotlinx.android.synthetic.main.fragment_main_screen.*
 import timber.log.Timber
 import kotlin.math.absoluteValue
 
@@ -18,11 +19,13 @@ import kotlin.math.absoluteValue
  */
 class MainScreen : Fragment() {
 
+    private val myBPM: MYBPM = MYBPM(120)//startwert
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
 
         var player: MediaPlayer = MediaPlayer.create(context,R.raw.click)
 
@@ -34,7 +37,7 @@ class MainScreen : Fragment() {
 
 
         //+ and - buttons change the bpm textfield
-        binding.buttonPlusOne.setOnClickListener {}
+        binding.buttonPlusOne.setOnClickListener {myBPM.bpm =+1 }
 
 
 
@@ -44,10 +47,11 @@ class MainScreen : Fragment() {
 
         binding.imageViewPlayPause.setOnClickListener {
 
-            //holt die bpm als Int aus dem TextView (innerhalb des Clicklisteners wegen Lifecycle "scope" ausserhalb)
-            var bpm = binding.textViewBPM.text.toString().toInt()
+            //get bpm value from input into data class
+            myBPM.bpm = textViewBPM.text.toString().toInt()
 
-            metronomeTimer.startTicker(bpm,player)
+            //starte ticker mit value aus der Dataclass
+            metronomeTimer.startTicker(myBPM.bpm,player)
 
         }
 
