@@ -18,13 +18,13 @@ class MetronomeTimer constructor(binding: FragmentMainScreenBinding) {
 
 
     //for coroutine
-    private lateinit var viewModelJob:Job
+    private lateinit var viewModelJob: Job
 
     //um stop zu checken
     private var stopCounter = 0
 
     //Scope
-    private lateinit var uiScope:CoroutineScope
+    private lateinit var uiScope: CoroutineScope
 
     val bindingUtil = binding
     val clockViews: List<View> =
@@ -37,46 +37,47 @@ class MetronomeTimer constructor(binding: FragmentMainScreenBinding) {
 
 
     fun startTicker(bpm: Int, player: MediaPlayer) {
+        //Handling für start-stop klicken
         stopCounter++
-        if (stopCounter == 2){
+        if (stopCounter == 2) {
             stopCounter = 0
             uiScope.cancel()
+            //mach alle wieder hellblau
+            for(item in clockViews){
+                item.setBackgroundResource(R.drawable.rounded_textview_inactive)
+            }
             return
-        }else{
+        } else { //erstell den job erst hier und mach die coroutine
             viewModelJob = Job()
 
-           uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
+            uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
 
+            //convert bpm into millisec 60000/bpm = millisec
+            var milliSec = 60000 / bpm
+            var counter = 0
 
-        //convert bpm into millisec 60000/bpm = millisec
-        var milliSec = 60000 / bpm
-        var counter = 0
+            //coroutine to use thread
+            uiScope.launch {
+                while (counter < 4) { //button pause not pressed
+                    clockViews[counter].setBackgroundResource(R.drawable.rounded_textview_active)
+                    //BPM Timer Kicken
+                    delay(milliSec.toLong())
+                    player.stop()
 
-        //coroutine to use thread
-        uiScope.launch {
-            while(counter < 4){ //button pause not pressed
-                clockViews[counter].setBackgroundResource(R.drawable.rounded_textview_active)
-                //BPM Timer Kicken
-                delay(milliSec.toLong())
-                player.stop()
+                    clockViews[counter].setBackgroundResource(R.drawable.rounded_textview_inactive)
+                    counter++
 
-                clockViews[counter].setBackgroundResource(R.drawable.rounded_textview_inactive)
-                counter++
+                    if (counter == 4) {
+                        counter = 0
+                    }
 
-                if (counter==4){
-                    counter=0
                 }
-
             }
-        }
 
 
-
+        }//else block ende
     }
-}
-
-
 
 
 }
