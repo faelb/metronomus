@@ -61,9 +61,11 @@ class MetronomeTimer constructor(binding: FragmentMainScreenBinding) {
             uiScope.launch {
                 while (counter < 4) { //button pause not pressed
                     clockViews[counter].setBackgroundResource(R.drawable.rounded_textview_active)
+                    //player.start()
+
                     //BPM Timer Kicken
                     delay(milliSec.toLong())
-                    player.stop()
+                    //player.stop()
 
                     clockViews[counter].setBackgroundResource(R.drawable.rounded_textview_inactive)
                     counter++

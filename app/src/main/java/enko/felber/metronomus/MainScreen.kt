@@ -19,35 +19,45 @@ import kotlin.math.absoluteValue
  */
 class MainScreen : Fragment() {
 
-    val myBPM: MYBPM = MYBPM(120)//startwert
+    var myBPM: MYBPM = MYBPM(120)//startwert
+
+
+    //for sounds later on
+    private lateinit var player: MediaPlayer
+
+    private lateinit var binding: FragmentMainScreenBinding
+
+    private lateinit var metronomeTimer: MetronomeTimer
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
+        player = MediaPlayer.create(context, R.raw.click)
 
-        //for sounds later on
-        var player: MediaPlayer = MediaPlayer.create(context,R.raw.click)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main_screen, container, false)
+
+        metronomeTimer = MetronomeTimer(binding = binding)
 
 
 
+        return binding.root
+    }
 
-        val binding: FragmentMainScreenBinding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_main_screen, container, false)
-        val metronomeTimer: MetronomeTimer = MetronomeTimer(binding = binding)
 
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        //init BPM show
+        textViewBPM.invalidate()
+        textViewBPM.setText(myBPM.bpm.toString())
 
         //+ and - buttons change the bpm textfield
-        binding.buttonPlusOne.setOnClickListener {myBPM.bpm = (myBPM.bpm+1) }
-        binding.buttonPlusFive.setOnClickListener {myBPM.bpm = (myBPM.bpm+5) }
-        binding.buttonMinusOne.setOnClickListener {myBPM.bpm = (myBPM.bpm-1) }
-        binding.buttonMinusFive.setOnClickListener {myBPM.bpm = (myBPM.bpm-5) }
-
-
-
-
-
+        buttonPlusOne.setOnClickListener { myBPM.bpm += 1;textViewBPM.setText(myBPM.bpm.toString()) }
+        buttonPlusFive.setOnClickListener { myBPM.bpm += 5;textViewBPM.setText(myBPM.bpm.toString()) }
+        buttonMinusOne.setOnClickListener { myBPM.bpm -= 1;textViewBPM.setText(myBPM.bpm.toString()) }
+        buttonMinusFive.setOnClickListener { myBPM.bpm -= 5;textViewBPM.setText(myBPM.bpm.toString()) }
 
         binding.imageViewPlayPause.setOnClickListener {
 
@@ -55,13 +65,11 @@ class MainScreen : Fragment() {
             myBPM.bpm = textViewBPM.text.toString().toInt()
 
             //starte ticker mit value aus der Dataclass
-            metronomeTimer.startTicker(myBPM.bpm,player)
+            metronomeTimer.startTicker(myBPM.bpm, player)
 
         }
 
 
-
-        return binding.root
     }
 
 }

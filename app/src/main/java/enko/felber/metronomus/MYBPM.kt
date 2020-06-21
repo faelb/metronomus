@@ -1,3 +1,3 @@
 package enko.felber.metronomus
 
-data class MYBPM (var bpm: Int )
+data class MYBPM (var bpm: Int)
