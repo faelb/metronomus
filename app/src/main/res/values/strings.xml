@@ -8,6 +8,7 @@
     <string name="buttonTextPlusFive">+5</string>
     <string name="buttonTextMinusOne">-1</string>
     <string name="buttonTextPlusOne">+1</string>
-    <string name="bpmMainScreen">120bpm</string>
+    <string name="bpmMainScreen">120</string>
     <string name="clockDescription">dot to show clock beat</string>
+    <string name="bpm_text">bpm</string>
 </resources>

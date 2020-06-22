@@ -3,22 +3,42 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="myBPM"
+            type="enko.felber.metronomus.MYBPM"/>
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainScreen">
 
-        <TextView
-            android:id="@+id/textViewMainFragment"
+        <EditText
+            android:id="@+id/textViewBPM"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/titan_one"
-            android:text="@string/bpmMainScreen"
+            android:inputType="number"
+            android:text="-"
             android:textSize="36sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textViewBPM2"
+            app:layout_constraintEnd_toStartOf="@+id/textViewBPM2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewBPM2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/titan_one"
+            android:text="@string/bpm_text"
+            android:textSize="36sp"
+            app:layout_constraintBottom_toTopOf="@+id/buttonPlusOne"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toEndOf="@+id/textViewBPM"
+            app:layout_constraintTop_toBottomOf="@+id/buttonPlusFive" />
 
         <Button
             android:id="@+id/buttonMinusOne"
@@ -69,58 +89,6 @@
             app:layout_constraintVertical_bias="0.401" />
 
         <ImageView
-            android:id="@+id/clock1"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:contentDescription="@string/clockDescription"
-            android:scrollbarSize="4dp"
-            app:layout_constraintBottom_toTopOf="@+id/buttonMinusFive"
-            app:layout_constraintEnd_toStartOf="@+id/clock2"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@android:drawable/presence_invisible" />
-
-        <ImageView
-            android:id="@+id/clock2"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:contentDescription="@string/clockDescription"
-            android:scrollbarSize="4dp"
-            app:layout_constraintBottom_toTopOf="@+id/buttonMinusFive"
-            app:layout_constraintEnd_toStartOf="@+id/clock3"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/clock1"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@android:drawable/presence_invisible" />
-
-        <ImageView
-            android:id="@+id/clock3"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:contentDescription="@string/clockDescription"
-            android:scrollbarSize="4dp"
-            app:layout_constraintBottom_toTopOf="@+id/buttonPlusFive"
-            app:layout_constraintEnd_toStartOf="@+id/clock4"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/clock2"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@android:drawable/presence_invisible" />
-
-        <ImageView
-            android:id="@+id/clock4"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:contentDescription="@string/clockDescription"
-            android:scrollbarSize="4dp"
-            app:layout_constraintBottom_toTopOf="@+id/buttonPlusFive"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/clock3"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@android:drawable/presence_invisible" />
-
-        <ImageView
             android:id="@+id/imageViewPlayPause"
             android:layout_width="105dp"
             android:layout_height="91dp"
@@ -130,6 +98,58 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.821"
             app:srcCompat="@android:drawable/ic_media_play" />
+
+        <TextView
+            android:id="@+id/clock3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_textview_inactive"
+            android:gravity="center"
+            android:text=""
+            app:layout_constraintBottom_toBottomOf="@+id/clock2"
+            app:layout_constraintEnd_toStartOf="@+id/clock4"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/clock2"
+            app:layout_constraintTop_toTopOf="@+id/clock2" />
+
+        <TextView
+            android:id="@+id/clock1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_textview_inactive"
+            android:gravity="center"
+            android:text=""
+            app:layout_constraintBottom_toBottomOf="@+id/clock2"
+            app:layout_constraintEnd_toStartOf="@+id/clock2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/clock2" />
+
+        <TextView
+            android:id="@+id/clock2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_textview_inactive"
+            android:gravity="center"
+            android:text=""
+            app:layout_constraintBottom_toTopOf="@+id/buttonMinusFive"
+            app:layout_constraintEnd_toStartOf="@+id/clock3"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/clock1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/clock4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_textview_inactive"
+            android:gravity="center"
+            android:text=""
+            app:layout_constraintBottom_toBottomOf="@+id/clock2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/clock3"
+            app:layout_constraintTop_toTopOf="@+id/clock2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
