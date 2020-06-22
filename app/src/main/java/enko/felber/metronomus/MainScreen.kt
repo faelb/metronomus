@@ -70,6 +70,15 @@ class MainScreen : Fragment() {
         }
 
 
+
+
+    }
+
+    //wenn man von Robertos Profilseite zurückkommt
+    override fun onResume() {
+        super.onResume()
+        textViewBPM.invalidate()
+        textViewBPM.setText(myBPM.bpm.toString())
     }
 
 }
