@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import enko.felber.metronomus.databinding.FragmentMainScreenBinding
 import kotlinx.android.synthetic.main.fragment_main_screen.*
 import timber.log.Timber
@@ -67,6 +68,11 @@ class MainScreen : Fragment() {
             //starte ticker mit value aus der Dataclass
             metronomeTimer.startTicker(myBPM.bpm, player)
 
+        }
+
+        //Navigation to Profiles
+        binding.profilesButton.setOnClickListener{view: View ->
+            this.findNavController().navigate(R.id.action_mainScreen_to_profileFragment)
         }
 
 
