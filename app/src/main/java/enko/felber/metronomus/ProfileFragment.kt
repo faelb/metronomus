@@ -5,6 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
+import enko.felber.metronomus.databinding.FragmentProfileBinding
 
 /**
  * A simple [Fragment] subclass.
@@ -16,7 +20,13 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        val binding: FragmentProfileBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile, container, false)
+
+        binding.genre1.setOnClickListener{view: View ->
+            Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_mainScreen)
+        }
+
+        return binding.root
     }
 
 }
