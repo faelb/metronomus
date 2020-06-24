@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/navigation"
-    app:startDestination="@id/mainScreen">
+    app:startDestination="@id/profileFragment">
 
     <fragment
         android:id="@+id/mainScreen"
@@ -10,9 +10,20 @@
         <action
             android:id="@+id/action_mainScreen_to_testFragment"
             app:destination="@id/testFragment" />
+        <action
+            android:id="@+id/action_mainScreen_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/testFragment"
         android:name="enko.felber.metronomus.TestFragment"
         android:label="TestFragment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="enko.felber.metronomus.ProfileFragment"
+        android:label="ProfileFragment" >
+        <action
+            android:id="@+id/action_profileFragment_to_mainScreen"
+            app:destination="@id/mainScreen" />
+    </fragment>
 </navigation>

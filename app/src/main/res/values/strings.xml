@@ -11,4 +11,5 @@
     <string name="bpmMainScreen">120</string>
     <string name="clockDescription">dot to show clock beat</string>
     <string name="bpm_text">bpm</string>
+    <string name="rock_n_60_bpm">Rock \n 60 BPM</string>
 </resources>
