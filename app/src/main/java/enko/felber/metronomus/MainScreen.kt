@@ -67,6 +67,18 @@ class MainScreen : Fragment() {
             //starte ticker mit value aus der Dataclass
             metronomeTimer.startTicker(myBPM.bpm, player)
 
+            binding.imageViewPlayPause.visibility = View.INVISIBLE
+            binding.imageViewPause.visibility = View.VISIBLE
+
+        }
+
+        binding.imageViewPause.setOnClickListener{
+            metronomeTimer.startTicker(myBPM.bpm, player)
+
+
+            binding.imageViewPause.visibility = View.INVISIBLE
+            binding.imageViewPlayPause.visibility = View.VISIBLE
+
         }
 
 
