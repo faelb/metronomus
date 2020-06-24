@@ -24,6 +24,8 @@
         android:label="ProfileFragment" >
         <action
             android:id="@+id/action_profileFragment_to_mainScreen"
-            app:destination="@id/mainScreen" />
+            app:destination="@id/mainScreen"
+            app:popUpTo="@id/mainScreen"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

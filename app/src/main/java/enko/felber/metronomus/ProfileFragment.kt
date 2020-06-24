@@ -23,7 +23,7 @@ class ProfileFragment : Fragment() {
         val binding: FragmentProfileBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile, container, false)
 
         binding.genre1.setOnClickListener{view: View ->
-            Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_mainScreen)
+            this.findNavController().navigate(R.id.action_profileFragment_to_mainScreen)
         }
 
         return binding.root
