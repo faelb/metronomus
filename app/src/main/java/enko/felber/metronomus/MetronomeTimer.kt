@@ -20,8 +20,8 @@ class MetronomeTimer constructor(binding: FragmentMainScreenBinding) {
     //for coroutine
     private lateinit var viewModelJob: Job
 
-    //um stop zu checken
-    private var stopCounter = 0
+    //um stop zu checken TODO umbennennen weil kein counter mehr (state)
+    private var stopCounter:Boolean = true
 
     //Scope
     private lateinit var uiScope: CoroutineScope
@@ -35,12 +35,24 @@ class MetronomeTimer constructor(binding: FragmentMainScreenBinding) {
             binding.clock4
         )
 
+    fun getStopCounter():Boolean{
+        return stopCounter
+    }
+
+    fun toggleStopCounter(){
+        stopCounter = !stopCounter
+    }
+
+    //needed when switching from Mainscreen to Profiles (if metronom active)
+    fun stopCoroutine(){
+        if (uiScope != null)
+            uiScope.cancel()
+    }
 
     fun startTicker(bpm: Int, player: MediaPlayer) {
         //Handling für start-stop klicken
-        stopCounter++
-        if (stopCounter == 2) {
-            stopCounter = 0
+        toggleStopCounter()
+        if (stopCounter) {
             uiScope.cancel()
             //mach alle wieder hellblau
             for(item in clockViews){
@@ -62,6 +74,7 @@ class MetronomeTimer constructor(binding: FragmentMainScreenBinding) {
                 while (counter < 4) { //button pause not pressed
                     clockViews[counter].setBackgroundResource(R.drawable.rounded_textview_active)
                     player.start()
+
 
                     //BPM Timer Kicken
                     delay(milliSec.toLong())

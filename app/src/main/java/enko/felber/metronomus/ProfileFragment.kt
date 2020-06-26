@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import enko.felber.metronomus.databinding.FragmentProfileBinding
+import kotlinx.android.synthetic.main.fragment_profile.*
 
 /**
  * A simple [Fragment] subclass.
@@ -25,6 +26,8 @@ class ProfileFragment : Fragment() {
         binding.genre1.setOnClickListener{view: View ->
             this.findNavController().navigate(R.id.action_profileFragment_to_mainScreen)
         }
+
+
 
         return binding.root
     }

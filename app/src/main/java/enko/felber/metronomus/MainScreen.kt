@@ -72,6 +72,11 @@ class MainScreen : Fragment() {
 
         //Navigation to Profiles
         binding.profilesButton.setOnClickListener{view: View ->
+            if (!metronomeTimer.getStopCounter()){
+                metronomeTimer.toggleStopCounter()
+                metronomeTimer.stopCoroutine()
+            }
+
             this.findNavController().navigate(R.id.action_mainScreen_to_profileFragment)
         }
 
