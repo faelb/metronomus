@@ -1,14 +1,9 @@
 package enko.felber.metronomus
 
-import android.app.Application
-import android.media.AsyncPlayer
 import android.media.MediaPlayer
-import android.os.Handler
 import android.view.View
-import androidx.databinding.DataBindingUtil
 import enko.felber.metronomus.databinding.FragmentMainScreenBinding
 import kotlinx.coroutines.*
-import timber.log.Timber
 
 
 class MetronomeTimer constructor(binding: FragmentMainScreenBinding) {
@@ -35,11 +30,11 @@ class MetronomeTimer constructor(binding: FragmentMainScreenBinding) {
             binding.clock4
         )
 
-    fun getStopCounter():Boolean{
+    fun getStopCounterState():Boolean{
         return stopCounter
     }
 
-    fun toggleStopCounter(){
+    fun toggleStopCounterState(){
         stopCounter = !stopCounter
     }
 
@@ -51,7 +46,7 @@ class MetronomeTimer constructor(binding: FragmentMainScreenBinding) {
 
     fun startTicker(bpm: Int, player: MediaPlayer) {
         //Handling für start-stop klicken
-        toggleStopCounter()
+        toggleStopCounterState()
         if (stopCounter) {
             uiScope.cancel()
             //mach alle wieder hellblau

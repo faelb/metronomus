@@ -1,6 +1,5 @@
 package enko.felber.metronomus
 
-import android.graphics.Color
 import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,12 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import enko.felber.metronomus.databinding.FragmentMainScreenBinding
 import kotlinx.android.synthetic.main.fragment_main_screen.*
-import timber.log.Timber
-import kotlin.math.absoluteValue
 
 /**
  * A simple [Fragment] subclass.
@@ -72,18 +68,19 @@ class MainScreen : Fragment() {
 
         //Navigation to Profiles
         binding.profilesButton.setOnClickListener{view: View ->
-            if (!metronomeTimer.getStopCounter()){
-                metronomeTimer.toggleStopCounter()
-                metronomeTimer.stopCoroutine()
-            }
-
             this.findNavController().navigate(R.id.action_mainScreen_to_profileFragment)
         }
-
-
-
-
     }
+
+    //Fragment wird verlassen
+    override fun onPause() {
+        super.onPause()
+        if (!metronomeTimer.getStopCounterState()) {
+            metronomeTimer.toggleStopCounterState()
+            metronomeTimer.stopCoroutine()
+        }
+    }
+
 
     //wenn man von Robertos Profilseite zurückkommt
     override fun onResume() {
