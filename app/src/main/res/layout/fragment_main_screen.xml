@@ -48,8 +48,8 @@
             android:layout_height="wrap_content"
             android:text="@string/buttonTextMinusOne"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.216"
+            app:layout_constraintEnd_toStartOf="@+id/buttonPlusOne"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.614" />
@@ -60,8 +60,8 @@
             android:layout_height="wrap_content"
             android:text="@string/buttonTextMinusFive"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.216"
+            app:layout_constraintEnd_toStartOf="@+id/buttonPlusFive"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.401" />
@@ -73,8 +73,8 @@
             android:text="@string/buttonTextPlusOne"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.839"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/buttonMinusOne"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.614" />
 
@@ -85,8 +85,8 @@
             android:text="@string/buttonTextPlusFive"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.839"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/buttonMinusFive"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.401" />
 
@@ -97,8 +97,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.821"
+            app:layout_constraintTop_toBottomOf="@+id/buttonPlusOne"
             app:srcCompat="@android:drawable/ic_media_play" />
 
         <ImageView
@@ -109,8 +108,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.821"
+            app:layout_constraintTop_toBottomOf="@+id/buttonPlusOne"
             app:srcCompat="@android:drawable/ic_media_pause"
             tools:visibility="gone" />
 
