@@ -67,6 +67,18 @@ class MainScreen : Fragment() {
             binding.imageViewPlayPause.visibility = View.INVISIBLE
             binding.imageViewPause.visibility = View.VISIBLE
 
+<<<<<<< HEAD
+=======
+        }
+
+        binding.imageViewPause.setOnClickListener{
+            metronomeTimer.startTicker(myBPM.bpm, player)
+
+
+            binding.imageViewPause.visibility = View.INVISIBLE
+            binding.imageViewPlayPause.visibility = View.VISIBLE
+
+>>>>>>> master
         }
 
         binding.imageViewPause.setOnClickListener{
