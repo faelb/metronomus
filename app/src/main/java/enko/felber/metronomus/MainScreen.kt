@@ -67,8 +67,7 @@ class MainScreen : Fragment() {
             binding.imageViewPlayPause.visibility = View.INVISIBLE
             binding.imageViewPause.visibility = View.VISIBLE
 
-<<<<<<< HEAD
-=======
+
         }
 
         binding.imageViewPause.setOnClickListener{
@@ -78,7 +77,7 @@ class MainScreen : Fragment() {
             binding.imageViewPause.visibility = View.INVISIBLE
             binding.imageViewPlayPause.visibility = View.VISIBLE
 
->>>>>>> master
+
         }
 
         binding.imageViewPause.setOnClickListener{
