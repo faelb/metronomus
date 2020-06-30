@@ -44,6 +44,18 @@ class MetronomeTimer constructor(binding: FragmentMainScreenBinding) {
             uiScope.cancel()
     }
 
+    fun stopTicker() {
+        toggleStopCounterState()
+        if (stopCounter) {
+            uiScope.cancel()
+            //mach alle wieder hellblau
+            for (item in clockViews) {
+                item.setBackgroundResource(R.drawable.rounded_textview_inactive)
+            }
+
+        }
+    }
+
     fun startTicker(bpm: Int, player: MediaPlayer) {
         //Handling für start-stop klicken
         toggleStopCounterState()

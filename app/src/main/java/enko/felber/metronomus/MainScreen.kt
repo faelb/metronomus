@@ -98,10 +98,15 @@ class MainScreen : Fragment() {
     //Fragment wird verlassen
     override fun onPause() {
         super.onPause()
-        if (!metronomeTimer.getStopCounterState()) {
-            metronomeTimer.toggleStopCounterState()
-            metronomeTimer.stopCoroutine()
+        metronomeTimer.stopTicker()
+        if(metronomeTimer.getStopCounterState()){
+            binding.imageViewPause.visibility = View.INVISIBLE
+            binding.imageViewPlayPause.visibility = View.VISIBLE
+        }else{
+            binding.imageViewPause.visibility = View.INVISIBLE
+            binding.imageViewPlayPause.visibility = View.VISIBLE
         }
+
     }
 
 
