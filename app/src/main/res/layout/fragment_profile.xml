@@ -7,79 +7,10 @@
 
     </data>
 
-    <ScrollView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/profile_recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-            <Button
-                android:id="@+id/genre1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:height="100dp"
-                android:paddingTop="20dp"
-                android:paddingBottom="20dp"
-                android:text="@string/rock_n_60_bpm" />
-
-            <Button
-                android:id="@+id/genre2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:height="100dp"
-                android:paddingTop="20dp"
-                android:paddingBottom="20dp"
-                android:text="Button" />
-
-            <Button
-                android:id="@+id/genre3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:height="100dp"
-                android:paddingTop="20dp"
-                android:paddingBottom="20dp"
-                android:text="Button" />
-
-            <Button
-                android:id="@+id/genre4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:height="100dp"
-                android:paddingTop="20dp"
-                android:paddingBottom="20dp"
-                android:text="Button" />
-
-            <Button
-                android:id="@+id/genre5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:height="100dp"
-                android:paddingTop="20dp"
-                android:paddingBottom="20dp"
-                android:text="Button" />
-
-            <Button
-                android:id="@+id/genre6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:height="100dp"
-                android:paddingTop="20dp"
-                android:paddingBottom="20dp"
-                android:text="Button" />
-
-            <Button
-                android:id="@+id/genre7"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:height="100dp"
-                android:paddingTop="20dp"
-                android:paddingBottom="20dp"
-                android:text="Button" />
-
-        </LinearLayout>
-    </ScrollView>
+        android:layout_height="match_parent"
+        android:layout_margin="10dp" />
 
 </layout>
