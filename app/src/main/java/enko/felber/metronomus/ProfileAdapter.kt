@@ -10,7 +10,7 @@ import enko.felber.metronomus.Profile
 
 import org.w3c.dom.Text
 
-class ProfileAdapter(private val profileList: ArrayList<Profile>) :
+class ProfileAdapter(private val profileList: ArrayList<Profile>, var clickListener: OnProfilItemClickListener) :
     RecyclerView.Adapter<ProfileAdapter.ProfileViewholder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProfileViewholder {
@@ -19,10 +19,11 @@ class ProfileAdapter(private val profileList: ArrayList<Profile>) :
     }
 
     override fun onBindViewHolder(holder: ProfileViewholder, position: Int) {
-        val profileItem = profileList[position]
+        //val profileItem = profileList[position]
+       // holder.name.text = profileItem.pName
+        // holder.bpm.text = profileItem.pBpm.toString()
 
-        holder.name.text = profileItem.pName
-        holder.bpm.text = profileItem.pBpm.toString()
+        holder.init(profileList.get(position),  clickListener)
     }
 
     override fun getItemCount(): Int {
@@ -32,5 +33,19 @@ class ProfileAdapter(private val profileList: ArrayList<Profile>) :
     class ProfileViewholder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val name: TextView = itemView.name_cardview
         val bpm: TextView = itemView.bpm_cardview
+
+        fun init(item: Profile, action: OnProfilItemClickListener){
+            //init all views here
+            name.text = item.pName
+            bpm.text = item.pBpm.toString()
+
+            itemView.setOnClickListener{
+                action.onItemClick(item, adapterPosition)
+            }
+        }
+    }
+
+    interface OnProfilItemClickListener{
+        fun onItemClick(item: Profile, position: Int)
     }
 }

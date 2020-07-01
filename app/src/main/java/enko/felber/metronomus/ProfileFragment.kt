@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
@@ -17,7 +18,7 @@ import kotlinx.android.synthetic.main.fragment_profile.*
 /**
  * A simple [Fragment] subclass.
  */
-class ProfileFragment : Fragment() {
+class ProfileFragment : Fragment(), ProfileAdapter.OnProfilItemClickListener {
     lateinit var binding: FragmentProfileBinding
 
     override fun onCreateView(
@@ -42,9 +43,12 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         var rvProfile: RecyclerView = binding.profileRecyclerview
-        var adapter: ProfileAdapter = ProfileAdapter(Profile.getProfileList() as ArrayList<Profile>)
+        var adapter: ProfileAdapter = ProfileAdapter(Profile.getProfileList() as ArrayList<Profile>, this)
         rvProfile.adapter = adapter
         rvProfile.layoutManager = LinearLayoutManager(context)
     }
 
+    override fun onItemClick(item: Profile, position: Int) {
+        Toast.makeText(context, item.pName, Toast.LENGTH_SHORT).show()
+    }
 }
