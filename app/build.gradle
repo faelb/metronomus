@@ -48,6 +48,8 @@ dependencies {
 
     implementation "androidx.recyclerview:recyclerview:1.1.0"
 
+    apply plugin: "androidx.navigation.safeargs"
+
     implementation 'com.jakewharton.timber:timber:4.7.1'
 
 }

@@ -10,6 +10,10 @@
         <action
             android:id="@+id/action_mainScreen_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <argument
+            android:name="profileBPM"
+            app:argType="integer" />
+
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
