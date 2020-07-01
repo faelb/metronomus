@@ -8,20 +8,25 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import enko.felber.metronomus.databinding.FragmentProfileBinding
 import kotlinx.android.synthetic.main.fragment_profile.*
+
 
 /**
  * A simple [Fragment] subclass.
  */
 class ProfileFragment : Fragment() {
+    lateinit var binding: FragmentProfileBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val binding: FragmentProfileBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile, container, false)
+
 
         /*
         binding.genre1.setOnClickListener{view: View ->
@@ -30,9 +35,16 @@ class ProfileFragment : Fragment() {
 
          */
 
-
-
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        var rvProfile: RecyclerView = binding.profileRecyclerview
+        var adapter: ProfileAdapter = ProfileAdapter(Profile.getProfileList() as ArrayList<Profile>)
+        rvProfile.adapter = adapter
+        rvProfile.layoutManager = LinearLayoutManager(context)
     }
 
 }
