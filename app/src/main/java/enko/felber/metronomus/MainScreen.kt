@@ -39,6 +39,8 @@ class MainScreen : Fragment() {
 
         metronomeTimer = MetronomeTimer(binding = binding)
 
+        (activity as MainActivity).supportActionBar?.title = getString(R.string.mainScreenTitle)
+
 
         return binding.root
     }

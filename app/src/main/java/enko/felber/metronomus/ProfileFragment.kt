@@ -13,9 +13,6 @@ import androidx.recyclerview.widget.RecyclerView
 import enko.felber.metronomus.databinding.FragmentProfileBinding
 
 
-/**
- * A simple [Fragment] subclass.
- */
 class ProfileFragment : Fragment(), ProfileAdapter.OnProfilItemClickListener {
     lateinit var binding: FragmentProfileBinding
 
@@ -26,6 +23,7 @@ class ProfileFragment : Fragment(), ProfileAdapter.OnProfilItemClickListener {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile, container, false)
 
+        (activity as MainActivity).supportActionBar?.title = getString(R.string.profileScreenTile)
 
         return binding.root
     }
