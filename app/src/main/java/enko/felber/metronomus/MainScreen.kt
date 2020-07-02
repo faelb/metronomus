@@ -2,6 +2,7 @@ package enko.felber.metronomus
 
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import enko.felber.metronomus.databinding.FragmentMainScreenBinding
 import kotlinx.android.synthetic.main.fragment_main_screen.*
+import timber.log.Timber
 
 /**
  * A simple [Fragment] subclass.
@@ -37,6 +39,7 @@ class MainScreen : Fragment() {
 
         metronomeTimer = MetronomeTimer(binding = binding)
 
+        (activity as MainActivity).supportActionBar?.title = getString(R.string.mainScreenTitle)
 
 
         return binding.root
@@ -68,6 +71,8 @@ class MainScreen : Fragment() {
             binding.imageViewPause.visibility = View.VISIBLE
 
 
+
+
         }
 
         binding.imageViewPause.setOnClickListener{
@@ -93,6 +98,9 @@ class MainScreen : Fragment() {
         binding.profilesButton.setOnClickListener{view: View ->
             this.findNavController().navigate(R.id.action_mainScreen_to_profileFragment)
         }
+
+
+
     }
 
     //Fragment wird verlassen
@@ -113,8 +121,19 @@ class MainScreen : Fragment() {
     //wenn man von Robertos Profilseite zurückkommt
     override fun onResume() {
         super.onResume()
+        Log.d("TEST", "IN ON RESUME")
+
+        //var args = MainScreenArgs.fromBundle(arguments!!)
+           // myBPM.bpm = args.profileBPM
+
+
+
         textViewBPM.invalidate()
         textViewBPM.setText(myBPM.bpm.toString())
+
+        //myBPM aktualisieren
+
+
     }
 
 }

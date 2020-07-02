@@ -13,4 +13,7 @@
     <string name="bpm_text">bpm</string>
     <string name="rock_n_60_bpm">Rock \n 60 BPM</string>
     <string name="profiles">Profiles</string>
+    <string name="bpm">BPM</string>
+    <string name="mainScreenTitle">Metronomus</string>
+    <string name="profileScreenTile">Profiles</string>
 </resources>
